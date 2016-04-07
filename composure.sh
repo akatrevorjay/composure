@@ -224,6 +224,40 @@ _strip_semicolons () {
 
 # 'porcelain' functions
 
+composure() {
+  about 'Composes shell scripts with ease'
+  param 'command [args]'
+  example '$ example composure cite [args]'
+  example '$ example composure draft [args]'
+  example '$ example composure glossary [args]'
+  example '$ example composure metafor [args]'
+  example '$ example composure reference [args]'
+  example '$ example composure revise [args]'
+  example '$ example composure write [args]'
+  example '$ example composure findgroup [args]'
+  example '$ example composure overview [args]'
+  example '$ example composure unique_metafor [args]'
+  example '$ example composure recompose [args]'
+  example '$ example composure compost [args]'
+  group 'composure'
+
+  local available=(cite draft glossary metafor reference revise write \
+                   findgroup overview unique_metafor recompose compost)
+
+  if [ $# -eq 0 ]; then
+    echo 'missing command' >&2
+    reference composure
+    return 1
+  fi
+
+  for cmd in "${available[@]}"; do
+    if [ "$cmd" = "$1" ]; then
+      "$@"
+      break
+    fi
+  done
+}
+
 cite ()
 {
   about 'creates one or more meta keywords for use in your functions'
