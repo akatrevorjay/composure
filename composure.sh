@@ -179,7 +179,7 @@ _typeset_functions ()
     f="${f##*/}"
     f="${f%.inc}"
     echo "$f"
-  done | cat - <(echo "cite\ndraft\nglossary\nmetafor\nreference\nrevise\nwrite") | sort | uniq
+  done | cat - <(echo -e "cite\ndraft\nglossary\nmetafor\nreference\nrevise\nwrite") | sort | uniq
 }
 
 _shell () {
